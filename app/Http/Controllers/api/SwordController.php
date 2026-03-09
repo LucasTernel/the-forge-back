@@ -23,4 +23,25 @@ class SwordController extends Controller
 
         return response()->json($item);
     }
+
+    public function store(Request $request)
+    {
+        $swords = \App\Models\Sword::create($request->all());
+        return response()->json($swords);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $swords = \App\Models\Sword::with('')->findOrFail($id);
+        $swords->update($request->all());
+        return response()->json($swords);
+    }
+
+    public function destroy($id)
+    {
+        $swords = \App\Models\Sword::with('')->findOrFail($id);
+        $swords->delete();
+        return response()->json(null);
+    }
+
 }

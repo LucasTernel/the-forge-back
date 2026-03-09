@@ -3,13 +3,15 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\SwordController;
+use App\Http\Controllers\api\CollectionController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route :: get('/Sword', [SwordController::class, 'index']);
-Route :: get('/Sword/{id}', [SwordController::class, 'show']);
-Route :: post('/Sword', [SwordController::class, 'store']);
-Route :: put('/Sword/{id}', [SwordController::class, 'update']);
-Route :: delete('/Sword/{id}', [SwordController::class, 'destroy']);
+Route::get('/items', [SwordController::class, 'index']);
+Route::get('/items/{id}', [SwordController::class, 'show']);
+
+Route::get('/collection/{id}', [CollectionController::class, 'show']);
+Route::get('/collections', [CollectionController::class, 'index']);
+Route::get('/collections/{id}', [CollectionController::class, 'show']);

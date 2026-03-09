@@ -9,14 +9,19 @@ class SwordController extends Controller
 {
     public function index()
     {
-        $swords = \App\Models\Sword::all();
-        return response()->json($swords);
+        $items = \App\Models\Sword::with(['type', 'origin', 'collection', 'media', 'criteria'])->get();
+        return response()->json($items);
     }
 
     public function show($id)
     {
-        $swords = \App\Models\Sword::with('colis.livraison')->findOrFail($id);
-        return response()->json($swords);
+        $item = \App\Models\Sword::with(['type', 'origin', 'collection', 'media', 'criteria'])->find($id);
+        
+        if (!$item) {
+            return response()->json(['Mauvaise épée, il serait temps de mieux trancher.'], 404);
+        }
+
+        return response()->json($item);
     }
 
     public function store(Request $request)
@@ -27,14 +32,14 @@ class SwordController extends Controller
 
     public function update(Request $request, $id)
     {
-        $swords = \App\Models\Sword::with('colis.livraison')->findOrFail($id);
+        $swords = \App\Models\Sword::with('')->findOrFail($id);
         $swords->update($request->all());
         return response()->json($swords);
     }
 
     public function destroy($id)
     {
-        $swords = \App\Models\Sword::with('colis.livraison')->findOrFail($id);
+        $swords = \App\Models\Sword::with('')->findOrFail($id);
         $swords->delete();
         return response()->json(null);
     }

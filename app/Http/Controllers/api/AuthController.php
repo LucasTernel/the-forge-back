@@ -24,6 +24,12 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        // Automatically create a default collection for the new user
+        $user->collections()->create([
+            'name' => 'Ma Collection',
+            'image_cover' => '/storage/default-collection.jpg',
+        ]);
+
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->json([

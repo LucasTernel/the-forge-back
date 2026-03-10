@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\api\CommentController;
 use App\Http\Controllers\api\SwordController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -41,7 +42,7 @@ Route::get('/origins/{id}', [OriginController::class , 'show']);
 Route::get('/types', [TypeController::class , 'index']);
 Route::get('/types/{id}', [TypeController::class , 'show']);
 
-Route::get('/criterias', [CriteriaController::class , 'index']);
+Route::get('/swords/{swordId}/comments', [CommentController::class , 'show']);Route::get('/criterias', [CriteriaController::class , 'index']);
 
 Route::get('/users/{id}/followers', [FollowController::class , 'getFollowers']);
 Route::get('/users/{id}/following', [FollowController::class , 'getFollowing']);

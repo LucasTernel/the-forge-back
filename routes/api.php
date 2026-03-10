@@ -41,11 +41,7 @@ Route::get('/origins/{id}', [OriginController::class , 'show']);
 Route::get('/types', [TypeController::class , 'index']);
 Route::get('/types/{id}', [TypeController::class , 'show']);
 
-<<<<<<< HEAD
-Route::get('/swords/{swordId}/comments', [CommentController::class , 'show']);
-=======
-Route::get('/criterias', [CriteriaController::class , 'index']);
+Route::get('/swords/{swordId}/comments', [CommentController::class , 'show']);Route::get('/criterias', [CriteriaController::class , 'index']);
 
 Route::get('/users/{id}/followers', [FollowController::class , 'getFollowers']);
 Route::get('/users/{id}/following', [FollowController::class , 'getFollowing']);
->>>>>>> c64d0a20a8cc25742797dc9a5d8f05225c5f79bf

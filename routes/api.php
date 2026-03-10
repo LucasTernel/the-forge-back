@@ -13,8 +13,8 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::get('items', [SwordController::class , 'index']);
-Route::get('items/{id}', [SwordController::class , 'show']);
+Route::get('/swords', [SwordController::class , 'index']);
+Route::get('/swords/{id}', [SwordController::class , 'show']);
 
 Route::get('/collection/{id}', [CollectionController::class , 'show']);
 Route::get('/collections', [CollectionController::class , 'index']);

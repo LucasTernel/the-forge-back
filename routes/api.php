@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\api\CommentController;
 use App\Http\Controllers\api\SwordController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -35,3 +36,5 @@ Route::get('/collections/{id}', [CollectionController::class , 'show']);
 
 Route::get('/types', [TypeController::class , 'index']);
 Route::get('/types/{id}', [TypeController::class , 'show']);
+
+Route::get('/comments/{id}',[CommentController::class , 'show']);

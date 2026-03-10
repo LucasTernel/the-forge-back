@@ -14,7 +14,11 @@ use App\Http\Controllers\api\FollowController;
 Route::post('/register', [AuthController::class , 'register']);
 Route::post('/login', [AuthController::class , 'login']);
 
+use App\Http\Controllers\api\FeedController;
+
 Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/feed/swords', [FeedController::class, 'swordsFeed']);
+    Route::get('/feed/collections', [FeedController::class, 'collectionsFeed']);
     Route::post('/media', [MediaController::class , 'store']);
     Route::post('/swords', [SwordController::class , 'store']);
     Route::put('/swords/{id}', [SwordController::class , 'update']);

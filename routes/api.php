@@ -37,4 +37,4 @@ Route::get('/collections/{id}', [CollectionController::class , 'show']);
 Route::get('/types', [TypeController::class , 'index']);
 Route::get('/types/{id}', [TypeController::class , 'show']);
 
-Route::get('/comments/{id}',[CommentController::class , 'show']);
+Route::get('/swords/{swordId}/comments', [CommentController::class , 'show']);

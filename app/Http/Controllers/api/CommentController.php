@@ -15,14 +15,14 @@ class CommentController extends Controller
         $comments = Comment::all();
         return response()->json($comments, 200, ['Content-Type' => 'application/json; charset=UTF-8'], JSON_UNESCAPED_UNICODE);
     }
-    public function show($id)
+    public function show($swordId)
     {
-        $comment = Comment::find($id);
-        if(!$comment)
+        $comments = Comment::where('sword_id', $swordId)->get();
+        if ($comments->isEmpty())
             {
-            return response()->json(['message' => 'type not found'], 404, ['Content-Type' => 'application/json; charset=UTF-8'], JSON_UNESCAPED_UNICODE);
+            return response()->json(['message' => 'comments not found for sword'], 404, ['Content-Type' => 'application/json; charset=UTF-8'], JSON_UNESCAPED_UNICODE);
             }
 
-            return response() -> json($comment,200,['Content-Type' => 'application/json; charset=UTF-8'], JSON_UNESCAPED_UNICODE);
+            return response() -> json($comments,200,['Content-Type' => 'application/json; charset=UTF-8'], JSON_UNESCAPED_UNICODE);
     }
 }

@@ -30,7 +30,8 @@ class AuthController extends Controller
             'image_cover' => '/storage/default-collection.jpg',
         ]);
 
-        $token = $user->createToken('auth_token')->plainTextToken;
+        // Default expiration: 30 days
+        $token = $user->createToken('auth_token', ['*'], now()->addMonth())->plainTextToken;
 
         return response()->json([
             'access_token' => $token,
@@ -43,6 +44,7 @@ class AuthController extends Controller
         $request->validate([
             'email' => 'required|string|email',
             'password' => 'required|string',
+            'remember' => 'boolean' // Optionnel: true pour 1 mois, false pour 24h par exemple
         ]);
 
         $user = User::where('email', $request->email)->first();
@@ -53,11 +55,14 @@ class AuthController extends Controller
             ]);
         }
 
-        $token = $user->createToken('auth_token')->plainTextToken;
+        // Si remember est coché: 1 mois, sinon 24 heures
+        $expiration = $request->remember ? now()->addMonth() : now()->addDay();
+        $token = $user->createToken('auth_token', ['*'], $expiration)->plainTextToken;
 
         return response()->json([
             'access_token' => $token,
             'token_type' => 'Bearer',
+            'expires_at' => $expiration->toDateTimeString(),
         ]);
     }
 

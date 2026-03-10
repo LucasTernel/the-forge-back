@@ -20,6 +20,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/swords/{id}', [SwordController::class , 'update']);
     Route::delete('/swords/{id}', [SwordController::class , 'destroy']);
     Route::post('/users/{id}/follow', [FollowController::class , 'toggleFollow']);
+    Route::put('/collections/{id}', [CollectionController::class , 'update']);
     Route::get('/logout', [AuthController::class , 'logout']);
     Route::get('/user', function (Request $request) {
             return $request->user();

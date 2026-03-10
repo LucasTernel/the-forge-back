@@ -79,4 +79,21 @@ class SwordController extends Controller
 
         return response()->json($sword, 200, ['Content-Type' => 'application/json; charset=UTF-8']);
     }
+
+    public function destroy(Request $request, $id)
+    {
+        $sword = Sword::with('collection')->find($id);
+
+        if (!$sword) {
+            return response()->json(['message' => 'Épée non trouvée.'], 404);
+        }
+
+        if (!$sword->collection || $sword->collection->user_id !== auth()->id()) {
+            return response()->json(['message' => 'Action non autorisée. Seul le bon épéiste de cette collection peut supprimer cette épée.'], 403, ['Content-Type' => 'application/json; charset=UTF-8']);
+        }
+
+        $sword->delete();
+
+        return response()->json(['message' => 'L\'épée a été retirée de la collection.'], 200, ['Content-Type' => 'application/json; charset=UTF-8']);
+    }
 }

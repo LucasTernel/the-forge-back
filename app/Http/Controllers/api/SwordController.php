@@ -17,7 +17,7 @@ class SwordController extends Controller
 
     public function show($id)
     {
-        $item = Sword::with(['type', 'origin', 'collection', 'media', 'criteria'])->find($id);
+        $item = Sword::with(['type', 'origin', 'collection.user', 'media', 'criteria', 'comments.user', 'likes'])->find($id);
 
         if (!$item) {
             return response()->json(['Mauvaise épée, il serait temps de mieux trancher.'], 404, ['Content-Type' => 'application/json; charset=UTF-8']);

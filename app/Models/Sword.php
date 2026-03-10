@@ -40,4 +40,14 @@ class Sword extends Model
     {
         return $this->belongsTo(Collection::class);
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
 }

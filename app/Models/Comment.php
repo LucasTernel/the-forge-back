@@ -18,3 +18,13 @@ class Comment extends Model
         return $this->belongsTo(Sword::class);
     }
 }
+    public function replies()
+    {
+        return $this->hasMany(Comment::class , 'parent_id')->with('user');
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo(Comment::class , 'parent_id');
+    }
+}

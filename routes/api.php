@@ -10,12 +10,14 @@ use App\Http\Controllers\api\TypeController;
 use App\Http\Controllers\api\OriginController;
 use App\Http\Controllers\api\AuthController;
 use App\Http\Controllers\api\FollowController;
+use App\Http\Controllers\api\FollowController;
 
 Route::post('/register', [AuthController::class , 'register']);
 Route::post('/login', [AuthController::class , 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/media', [MediaController::class , 'store']);
+    Route::post('/users/{id}/follow', [FollowController::class , 'toggleFollow']);
     Route::post('/swords', [SwordController::class , 'store']);
     Route::put('/swords/{id}', [SwordController::class , 'update']);
     Route::delete('/swords/{id}', [SwordController::class , 'destroy']);
@@ -40,7 +42,12 @@ Route::get('/origins/{id}', [OriginController::class , 'show']);
 Route::get('/types', [TypeController::class , 'index']);
 Route::get('/types/{id}', [TypeController::class , 'show']);
 
+Route::get('/types', [TypeController::class , 'index']);
+Route::get('/types/{id}', [TypeController::class , 'show']);
+
 Route::get('/criterias', [CriteriaController::class , 'index']);
 
+Route::get('/users/{id}/followers', [FollowController::class , 'getFollowers']);
+Route::get('/users/{id}/following', [FollowController::class , 'getFollowing']);
 Route::get('/users/{id}/followers', [FollowController::class , 'getFollowers']);
 Route::get('/users/{id}/following', [FollowController::class , 'getFollowing']);

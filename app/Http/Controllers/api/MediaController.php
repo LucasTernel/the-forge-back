@@ -33,7 +33,6 @@ class MediaController extends Controller
             $file = $request->file('image');
             $filename = time() . '_' . $file->getClientOriginalName();
             
-            // On sauvegarde l'image dans storage/app/public/{collection_id}/{sword_id}
             $file->storeAs("{$sword->collection_id}/{$sword->id}", $filename, 'public');
 
             $media = Media::create([

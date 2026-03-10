@@ -9,12 +9,14 @@ use App\Http\Controllers\api\CriteriaController;
 use App\Http\Controllers\api\TypeController;
 use App\Http\Controllers\api\OriginController;
 use App\Http\Controllers\api\AuthController;
+use App\Http\Controllers\api\FollowController;
 
 Route::post('/register', [AuthController::class , 'register']);
 Route::post('/login', [AuthController::class , 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/media', [MediaController::class , 'store']);
+    Route::post('/users/{id}/follow', [FollowController::class, 'toggleFollow']);
     Route::get('/user', function (Request $request) {
             return $request->user();
         }
@@ -42,3 +44,6 @@ Route::post('/media', [MediaController::class, 'store'])->middleware('auth:sanct
 
 Route::get('/types', [TypeController::class , 'index']);
 Route::get('/types/{id}', [TypeController::class , 'show']);
+
+Route::get('/users/{id}/followers', [FollowController::class, 'getFollowers']);
+Route::get('/users/{id}/following', [FollowController::class, 'getFollowing']);

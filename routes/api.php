@@ -18,3 +18,8 @@ Route::get('/swords/{id}', [SwordController::class , 'show']);
 Route::get('/collection/{id}', [CollectionController::class , 'show']);
 Route::get('/collections', [CollectionController::class , 'index']);
 Route::get('/collections/{id}', [CollectionController::class , 'show']);
+
+
+
+Route ::get('/types', [TypeController::class , 'index']);
+Route ::get('/types/{id}', [TypeController::class , 'show']);

@@ -16,18 +16,19 @@ Route::post('/login', [AuthController::class , 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/media', [MediaController::class , 'store']);
+    Route::post('/swords', [SwordController::class , 'store']);
+    Route::put('/swords/{id}', [SwordController::class , 'update']);
+    Route::delete('/swords/{id}', [SwordController::class , 'destroy']);
     Route::post('/users/{id}/follow', [FollowController::class , 'toggleFollow']);
+    Route::get('/logout', [AuthController::class , 'logout']);
     Route::get('/user', function (Request $request) {
             return $request->user();
         }
         );
-        Route::get('/logout', [AuthController::class , 'logout']);
     });
 
 Route::get('/swords', [SwordController::class , 'index']);
-Route::post('/swords', [SwordController::class , 'store']);
 Route::get('/swords/{id}', [SwordController::class , 'show']);
-Route::put('/swords/{id}', [SwordController::class , 'update'])->middleware('auth:sanctum');
 
 Route::get('/collection/{id}', [CollectionController::class , 'show']);
 Route::get('/collections', [CollectionController::class , 'index']);

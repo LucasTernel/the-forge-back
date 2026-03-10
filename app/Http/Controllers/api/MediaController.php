@@ -32,7 +32,7 @@ class MediaController extends Controller
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = time() . '_' . $file->getClientOriginalName();
-            
+
             $file->storeAs("{$sword->collection_id}/{$sword->id}", $filename, 'public');
 
             $media = Media::create([

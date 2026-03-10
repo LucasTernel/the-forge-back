@@ -5,6 +5,11 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Models\Media;
+use App\Models\Sword;
+use App\Models\Collection;
+use Illuminate\Support\Facades\Storage;
+
 class MediaController extends Controller
 {
     public function store(Request $request)
@@ -17,8 +22,8 @@ class MediaController extends Controller
             'sword_id' => 'required|exists:swords,id',
         ]);
 
-        $sword = \App\Models\Sword::findOrFail($request->sword_id);
-        $collection = \App\Models\Collection::find($sword->collection_id);
+        $sword = Sword::findOrFail($request->sword_id);
+        $collection = Collection::find($sword->collection_id);
         $user = auth('sanctum')->user();
 
         if ($collection->user_id !== $user->id) {
@@ -37,7 +42,7 @@ class MediaController extends Controller
             $data['url'] = $request->input('url');
         }
 
-        $media = \App\Models\Media::create($data);
+        $media = Media::create($data);
         return response()->json($media, 201);
     }
 }

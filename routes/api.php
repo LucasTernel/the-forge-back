@@ -26,6 +26,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/swords/{id}', [SwordController::class , 'destroy']);
     Route::post('/swords/{id}/like', [LikeController::class , 'toggle']);
     Route::post('/swords/{id}/comments', [CommentController::class , 'store']);
+    Route::put('/comments/{id}', [CommentController::class , 'update']);
     Route::delete('/comments/{id}', [CommentController::class , 'destroy']);
     Route::post('/users/{id}/follow', [FollowController::class , 'toggleFollow']);
     Route::put('/collections/{id}', [CollectionController::class , 'update']);

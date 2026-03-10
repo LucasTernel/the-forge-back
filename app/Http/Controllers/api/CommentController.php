@@ -64,4 +64,23 @@ class CommentController extends Controller
 
         return response()->json(['message' => 'Commentaire supprimé.'], 200, ['Content-Type' => 'application/json; charset=UTF-8'], JSON_UNESCAPED_UNICODE);
     }
+
+    public function update(Request $request, $id)
+    {
+        $comment = Comment::findOrFail($id);
+
+        if ($comment->user_id !== auth()->id()) {
+            return response()->json(['message' => 'Action non autorisée.'], 403, ['Content-Type' => 'application/json; charset=UTF-8'], JSON_UNESCAPED_UNICODE);
+        }
+
+        $request->validate([
+            'comment' => 'required|string|max:1000',
+        ]);
+
+        $comment->update([
+            'comment' => $request->comment,
+        ]);
+
+        return response()->json($comment->load('user'), 200, ['Content-Type' => 'application/json; charset=UTF-8'], JSON_UNESCAPED_UNICODE);
+    }
 }

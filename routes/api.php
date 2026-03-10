@@ -3,7 +3,6 @@
 use App\Http\Controllers\api\SwordController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\api\SwordController;
 use App\Http\Controllers\api\CollectionController;
 use App\Http\Controllers\api\CriteriaController;
 use App\Http\Controllers\api\TypeController;

@@ -19,12 +19,29 @@ class DatabaseSeeder extends Seeder
         $user = User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
+            'password' => bcrypt('ecoal2025'),
             'role' => 'admin',
         ]);
 
         // 2. Create Types
         $katanaType = \App\Models\Type::create(['name' => 'Katana']);
         $longswordType = \App\Models\Type::create(['name' => 'Épée longue']);
+        $daggerType = \App\Models\Type::create(['name' => 'Dagger']);
+        $rapierType = \App\Models\Type::create(['name' => 'Rapier']);
+        $halberdType = \App\Models\Type::create(['name' => 'Halberd']);
+        $naginataType = \App\Models\Type::create(['name' => 'Naginata']);
+        $spearType = \App\Models\Type::create(['name' => 'Spear']);
+        $maceType = \App\Models\Type::create(['name' => 'Mace']);
+        $warhammerType = \App\Models\Type::create(['name' => 'War Hammer']);
+        $flailType = \App\Models\Type::create(['name' => 'Flail']);
+        $longbowType = \App\Models\Type::create(['name' => 'Longbow']);
+        $crossbowType = \App\Models\Type::create(['name' => 'Crossbow']);
+        $claymoreType = \App\Models\Type::create(['name' => 'Claymore']);
+        $scimitarType = \App\Models\Type::create(['name' => 'Scimitar']);
+        $battleaxeType = \App\Models\Type::create(['name' => 'Battle Axe']);
+        $shortswordType = \App\Models\Type::create(['name' => 'Shortsword']);
+        $gladiusType = \App\Models\Type::create(['name' => 'Gladius']);
+        $morningstarType = \App\Models\Type::create(['name' => 'Morning Star']);
 
         // 3. Create Origins
         $japan = \App\Models\Origin::create(['name' => 'Japon']);

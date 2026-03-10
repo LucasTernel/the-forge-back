@@ -4,17 +4,26 @@ use App\Http\Controllers\api\SwordController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\CollectionController;
+use App\Http\Controllers\api\MediaController;
 use App\Http\Controllers\api\CriteriaController;
 use App\Http\Controllers\api\TypeController;
 use App\Http\Controllers\api\OriginController;
-use App\Http\Controllers\api\MediaController;
+use App\Http\Controllers\api\AuthController;
 
+Route::post('/register', [AuthController::class , 'register']);
+Route::post('/login', [AuthController::class , 'login']);
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/media', [MediaController::class , 'store']);
+    Route::get('/user', function (Request $request) {
+            return $request->user();
+        }
+        );
+        Route::get('/logout', [AuthController::class , 'logout']);
+    });
 
 Route::get('/swords', [SwordController::class , 'index']);
+Route::post('/swords', [SwordController::class , 'store']);
 Route::get('/swords/{id}', [SwordController::class , 'show']);
 Route::put('/swords/{id}', [SwordController::class , 'update'])->middleware('auth:sanctum');
 
@@ -28,3 +37,8 @@ Route::get('/origins/{id}', [OriginController::class , 'show']);
 Route::get('/criterias', [CriteriaController::class , 'index']);
 
 Route::post('/media', [MediaController::class, 'store'])->middleware('auth:sanctum');
+
+
+
+Route::get('/types', [TypeController::class , 'index']);
+Route::get('/types/{id}', [TypeController::class , 'show']);

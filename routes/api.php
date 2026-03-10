@@ -7,6 +7,8 @@ use App\Http\Controllers\api\CollectionController;
 use App\Http\Controllers\api\CriteriaController;
 use App\Http\Controllers\api\TypeController;
 use App\Http\Controllers\api\OriginController;
+use App\Http\Controllers\api\MediaController;
+
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -14,7 +16,15 @@ Route::get('/user', function (Request $request) {
 
 Route::get('/swords', [SwordController::class , 'index']);
 Route::get('/swords/{id}', [SwordController::class , 'show']);
+Route::put('/swords/{id}', [SwordController::class , 'update'])->middleware('auth:sanctum');
 
 Route::get('/collection/{id}', [CollectionController::class , 'show']);
 Route::get('/collections', [CollectionController::class , 'index']);
 Route::get('/collections/{id}', [CollectionController::class , 'show']);
+
+Route::get('/origins', [OriginController::class , 'index']);
+Route::get('/origins/{id}', [OriginController::class , 'show']);
+
+Route::get('/criterias', [CriteriaController::class , 'index']);
+
+Route::post('/media', [MediaController::class, 'store'])->middleware('auth:sanctum');

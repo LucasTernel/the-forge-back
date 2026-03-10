@@ -8,12 +8,6 @@ use App\Http\Controllers\api\MediaController;
 use App\Http\Controllers\api\CriteriaController;
 use App\Http\Controllers\api\TypeController;
 use App\Http\Controllers\api\OriginController;
-<<<<<<< HEAD
-=======
-use App\Http\Controllers\api\MediaController;
-
-
->>>>>>> 58d1ade (again)
 use App\Http\Controllers\api\AuthController;
 use App\Http\Controllers\api\FollowController;
 

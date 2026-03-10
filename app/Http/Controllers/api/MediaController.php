@@ -5,39 +5,45 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Models\Media;
+use App\Models\Sword;
+use Illuminate\Support\Facades\Storage;
+
 class MediaController extends Controller
 {
     public function store(Request $request)
     {
-        if (!auth('sanctum')->check()) {
-            return response()->json(['message' => 'Veuillez vous connecter (go to login)'], 401, ['Content-Type' => 'application/json; charset=UTF-8'], JSON_UNESCAPED_UNICODE);
-        }
-
         $request->validate([
             'sword_id' => 'required|exists:swords,id',
+            'type' => 'required|string',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
 
-        $sword = \App\Models\Sword::findOrFail($request->sword_id);
-        $collection = \App\Models\Collection::find($sword->collection_id);
-        $user = auth('sanctum')->user();
+        $sword = Sword::with('collection')->find($request->sword_id);
 
-        if ($collection->user_id !== $user->id) {
-            return response()->json(['message' => 'Cette collection ne vous appartient pas'], 403, ['Content-Type' => 'application/json; charset=UTF-8'], JSON_UNESCAPED_UNICODE);
+        if (!$sword) {
+            return response()->json(['message' => 'L épée est introuvable...'], 404, ['Content-Type' => 'application/json; charset=UTF-8']);
         }
 
-        $data = $request->except('url');
-
-        if ($request->hasFile('url')) {
-            $file = $request->file('url');
-            $filename = time() . '_' . preg_replace('/[^a-zA-Z0-9.\-_]/', '', $file->getClientOriginalName());
-            $path = $file->storeAs("{$collection->id}/{$sword->id}", $filename, 'public');
-            $data['url'] = '/storage/' . $path;
-        }
-        elseif ($request->filled('url')) {
-            $data['url'] = $request->input('url');
+        if (!$sword->collection || $sword->collection->user_id !== auth()->id()) {
+            return response()->json(['message' => 'Action non autorisée. Seul le bon épéiste de cette collection peut modifier cette épée.'], 403, ['Content-Type' => 'application/json; charset=UTF-8']);
         }
 
-        $media = \App\Models\Media::create($data);
-        return response()->json($media, 201);
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            
+            $file->storeAs("{$sword->collection_id}/{$sword->id}", $filename, 'public');
+
+            $media = Media::create([
+                'sword_id' => $sword->id,
+                'type' => $request->type,
+                'url' => $filename,
+            ]);
+
+            return response()->json($media, 201, ['Content-Type' => 'application/json; charset=UTF-8']);
+        }
+
+        return response()->json(['message' => 'Aucune image envoyée.'], 400, ['Content-Type' => 'application/json; charset=UTF-8']);
     }
 }

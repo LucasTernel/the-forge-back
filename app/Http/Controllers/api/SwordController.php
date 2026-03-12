@@ -64,7 +64,18 @@ class SwordController extends Controller
         $sword->image_cover = $this->handleImageCover($request, $collection->id, $sword->id);
         $sword->save();
 
-        return response()->json($sword, 201);
+        // Critères
+        if ($request->has('criteria')) {
+            $criteriaSync = [];
+            foreach ($request->input('criteria') as $item) {
+                if (!empty($item['criteria_id']) && isset($item['rating'])) {
+                    $criteriaSync[$item['criteria_id']] = ['rating' => $item['rating']];
+                }
+            }
+            $sword->criteria()->sync($criteriaSync);
+        }
+
+        return response()->json($sword->load('criteria'), 201);
     }
 
     public function update(Request $request, $id)

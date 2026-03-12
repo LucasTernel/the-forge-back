@@ -18,10 +18,15 @@ class AuthController extends Controller
             'password' => 'required|string|min:8',
         ]);
 
+        // Extract first name for the avatar
+        $firstName = explode(' ', $request->name)[0];
+        $avatarUrl = "https://api.dicebear.com/7.x/avataaars/svg?seed={$firstName}";
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'avatar_url' => $avatarUrl,
         ]);
 
         // Automatically create a default collection for the new user
@@ -64,6 +69,34 @@ class AuthController extends Controller
             'token_type' => 'Bearer',
             'expires_at' => $expiration->toDateTimeString(),
         ]);
+    }
+
+    public function update(Request $request)
+    {
+        $user = $request->user();
+
+        $request->validate([
+            'name' => 'sometimes|string|max:255',
+            'email' => 'sometimes|string|email|max:255|unique:users,email,' . $user->id,
+            'current_password' => 'sometimes|string',
+            'new_password' => 'sometimes|string|min:6|confirmed',
+        ]);
+
+        if ($request->filled('current_password')) {
+            if (!Hash::check($request->current_password, $user->password)) {
+                throw ValidationException::withMessages([
+                    'current_password' => ['Le mot de passe actuel est incorrect.'],
+                ]);
+            }
+            $user->password = Hash::make($request->new_password);
+        }
+
+        if ($request->filled('name')) $user->name = $request->name;
+        if ($request->filled('email')) $user->email = $request->email;
+
+        $user->save();
+
+        return response()->json($user);
     }
 
     public function logout(Request $request)

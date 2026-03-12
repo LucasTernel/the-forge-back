@@ -42,6 +42,7 @@ Route::middleware('auth:sanctum')->group(function () {
             return $request->user();
         }
         );
+    Route::put('/user', [AuthController::class , 'update']);
     });
 
 Route::get('/swords', [SwordController::class , 'index']);

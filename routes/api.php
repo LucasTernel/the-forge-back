@@ -13,6 +13,7 @@ use App\Http\Controllers\api\AuthController;
 use App\Http\Controllers\api\FollowController;
 use App\Http\Controllers\api\FeedController;
 use App\Http\Controllers\api\LikeController;
+use App\Http\Controllers\api\UserController;
 
 Route::post('/register', [AuthController::class , 'register']);
 Route::post('/login', [AuthController::class , 'login']);
@@ -59,5 +60,6 @@ Route::get('/eras/{id}', [EraController::class , 'show']);
 Route::get('/swords/{swordId}/comments', [CommentController::class , 'show']);
 Route::get('/criterias', [CriteriaController::class , 'index']);
 
+Route::get('/users', [UserController::class , 'index']);
 Route::get('/users/{id}/followers', [FollowController::class , 'getFollowers']);
 Route::get('/users/{id}/following', [FollowController::class , 'getFollowing']);

@@ -36,4 +36,17 @@ class LikeController extends Controller
             'liked' => true
         ]);
     }
+
+    public function getUserLikes($id)
+    {
+        $user = \App\Models\User::find($id);
+
+        if (!$user) {
+            return response()->json(['message' => 'Utilisateur introuvable.'], 404, ['Content-Type' => 'application/json; charset=UTF-8']);
+        }
+
+        $likes = $user->likes()->with('sword')->get();
+
+        return response()->json($likes, 200, ['Content-Type' => 'application/json; charset=UTF-8']);
+    }
 }

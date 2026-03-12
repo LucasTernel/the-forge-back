@@ -9,9 +9,23 @@ use App\Models\Collection;
 
 class SwordController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $items = Sword::with(['era', 'origin', 'collection', 'media', 'criteria'])->get();
+        $query = Sword::with(['era', 'origin', 'collection', 'media', 'criteria']);
+
+        if ($request->filled('search')) {
+            $query->where('name', 'like', '%' . $request->search . '%');
+        }
+
+        if ($request->filled('era_id')) {
+            $query->where('era_id', $request->era_id);
+        }
+
+        if ($request->filled('origin_id')) {
+            $query->where('origin   _id', $request->origin_id);
+        }
+
+        $items = $query->orderBy('name')->get();
         return response()->json($items, 200, ['Content-Type' => 'application/json; charset=UTF-8']);
     }
 
@@ -104,9 +118,9 @@ class SwordController extends Controller
     private function handleImageCover(Request $request, $collectionId, $swordId): ?string
     {
         if ($request->hasFile('image_cover')) {
-            $file     = $request->file('image_cover');
+            $file = $request->file('image_cover');
             $filename = time() . '_' . preg_replace('/[^a-zA-Z0-9.\-_]/', '', $file->getClientOriginalName());
-            $path     = $file->storeAs("{$collectionId}/{$swordId}", $filename, 'public');
+            $path = $file->storeAs("{$collectionId}/{$swordId}", $filename, 'public');
             return '/storage/' . $path;
         }
 

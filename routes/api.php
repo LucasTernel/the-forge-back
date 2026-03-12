@@ -63,3 +63,4 @@ Route::get('/criterias', [CriteriaController::class , 'index']);
 Route::get('/users', [UserController::class , 'index']);
 Route::get('/users/{id}/followers', [FollowController::class , 'getFollowers']);
 Route::get('/users/{id}/following', [FollowController::class , 'getFollowing']);
+Route::get('/users/{id}/likes', [LikeController::class , 'getUserLikes']);

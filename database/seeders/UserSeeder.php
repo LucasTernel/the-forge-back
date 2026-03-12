@@ -15,6 +15,7 @@ class UserSeeder extends Seeder
             'email' => 'test@example.com',
             'password' => bcrypt('ecoal2026'),
             'role' => 'admin',
+            'avatar_url' => 'https://api.dicebear.com/7.x/avataaars/svg?seed=Admin',
         ]);
 
         // 15 Regular users

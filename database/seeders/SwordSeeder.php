@@ -47,10 +47,11 @@ class SwordSeeder extends Seeder
             $extensions = ['jpg', 'jpeg', 'png', 'avif'];
             $imageName = null;
 
-            // Get all files in the directory once (can be optimized by moving outside the loop)
+            // Get all files in the directory once, safely
             static $allFiles = null;
             if ($allFiles === null) {
-                $allFiles = scandir(storage_path("app/public/swords"));
+                $path = storage_path("app/public/swords");
+                $allFiles = is_dir($path) ? scandir($path) : [];
             }
 
             foreach ($allFiles as $file) {

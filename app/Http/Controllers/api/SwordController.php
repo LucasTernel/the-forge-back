@@ -22,7 +22,7 @@ class SwordController extends Controller
         }
 
         if ($request->filled('origin_id')) {
-            $query->where('origin   _id', $request->origin_id);
+            $query->where('origin_id', $request->origin_id);
         }
 
         $items = $query->orderBy('name')->get();

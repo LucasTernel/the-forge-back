@@ -1,0 +1,26 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use App\Models\User;
+
+class UserSeeder extends Seeder
+{
+    public function run(): void
+    {
+        // 1 Admin user
+        User::factory()->create([
+            'name' => 'Admin User',
+            'email' => 'test@example.com',
+            'password' => bcrypt('ecoal2026'),
+            'role' => 'admin',
+        ]);
+
+        // 5 Regular users
+        User::factory(5)->create([
+            'password' => bcrypt('password'),
+            'role' => 'user',
+        ]);
+    }
+}

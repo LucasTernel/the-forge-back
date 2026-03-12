@@ -7,6 +7,7 @@ use App\Models\Sword;
 use App\Models\Era;
 use App\Models\Origin;
 use App\Models\Collection;
+use App\Models\Criteria;
 
 class SwordSeeder extends Seeder
 {
@@ -15,9 +16,22 @@ class SwordSeeder extends Seeder
         $eras = Era::all();
         $origins = Origin::all();
         $collections = Collection::all();
+        $allCriterias = Criteria::all();
 
         if ($collections->isEmpty()) {
             return;
+        }
+
+        // Load sword criteria from CSV into a lookup table
+        $criteriaData = [];
+        if (file_exists(base_path("database/data/sword_criterias.csv"))) {
+            $csvCriteria = fopen(base_path("database/data/sword_criterias.csv"), "r");
+            $first = true;
+            while (($row = fgetcsv($csvCriteria, 2000, ",")) !== FALSE) {
+                if ($first) { $first = false; continue; }
+                $criteriaData[$row[0]][$row[1]] = $row[2];
+            }
+            fclose($csvCriteria);
         }
 
         $csvFile = fopen(base_path("database/data/swords.csv"), "r");
@@ -120,6 +134,12 @@ class SwordSeeder extends Seeder
                 if (file_exists($sourcePath)) {
                     copy($sourcePath, "{$destDir}/{$imageName}");
                 }
+            }
+
+            // Assign criteria from CSV data
+            foreach ($allCriterias as $c) {
+                $rating = $criteriaData[$name][$c->name] ?? 'N/A';
+                $sword->criteria()->attach($c->id, ['rating' => $rating]);
             }
 
             $swordCount++;

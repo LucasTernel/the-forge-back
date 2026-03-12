@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             EraSeeder::class,
             OriginSeeder::class,
             CollectionSeeder::class,
+            CriteriaSeeder::class,
             SwordSeeder::class,
         ]);
     }

@@ -8,7 +8,7 @@ Welcome to the backend repository of **The Forge**, a web application dedicated 
 
 Our team is composed of passionate developers working across the stack:
 
-*   **Lucas Ternel** - Backend Lead & Project Architect 🏗️
+*   **Lucas Ternel** - Backend Lead 🏗️
 *   **Thomas Seyroles** - Frontend Lead & UI Designer 🎨
 *   **Thomas Sladojevic** - Backend Developer 💻
 *   **Conor McCracken** - Backend Developer 💻

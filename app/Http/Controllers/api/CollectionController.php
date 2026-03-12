@@ -10,7 +10,7 @@ class CollectionController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Collection::with(['user', 'swords']);
+        $query = Collection::with(['user', 'swords.era', 'swords.origin']);
 
         if ($request->filled('search')) {
             $query->where('name', 'like', '%' . $request->search . '%');
@@ -26,7 +26,7 @@ class CollectionController extends Controller
 
     public function show($id)
     {
-        $collection = Collection::with(['user', 'swords'])->find($id);
+        $collection = Collection::with(['user', 'swords.era', 'swords.origin'])->find($id);
 
         if (!$collection) {
             return response()->json(["Mauvaise collection d'épée, tranche mieux."], 404, ['Content-Type' => 'application/json; charset=UTF-8'], JSON_UNESCAPED_UNICODE);

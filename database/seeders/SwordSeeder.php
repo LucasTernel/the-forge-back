@@ -107,6 +107,7 @@ class SwordSeeder extends Seeder
                 'collection_id' => $collection->id,
             ]);
 
+            /*
             // Physically copy the file to the structured folder: storage/app/public/{collection_id}/{sword_id}/{filename}
             if ($imageName) {
                 $sourcePath = storage_path("app/public/swords/{$imageName}");
@@ -118,6 +119,7 @@ class SwordSeeder extends Seeder
                 
                 copy($sourcePath, "{$destDir}/{$imageName}");
             }
+            */
 
             $swordCount++;
             // Increment collection index every 2-3 swords (simple cycling works too)

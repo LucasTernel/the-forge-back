@@ -15,7 +15,7 @@ class CollectionSeeder extends Seeder
 
         foreach ($users as $user) {
             Collection::create([
-                'name' => 'Collection de ' . $user->name,
+                'name' => 'Collection of ' . $user->name,
                 'user_id' => $user->id,
                 'image_cover' => 'https://picsum.photos/800/600?random=' . (300 + $index),
             ]);

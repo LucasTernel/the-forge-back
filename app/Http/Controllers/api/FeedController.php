@@ -25,8 +25,8 @@ class FeedController extends Controller
 
         $swords = Sword::with(['era', 'origin', 'collection.user', 'media', 'criteria'])
             ->whereHas('collection', function ($query) use ($followingIds) {
-                $query->whereIn('user_id', $followingIds);
-            })
+            $query->whereIn('user_id', $followingIds);
+        })
             ->latest()
             ->get();
 

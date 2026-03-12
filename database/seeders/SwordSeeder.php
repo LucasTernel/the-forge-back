@@ -47,10 +47,10 @@ class SwordSeeder extends Seeder
             $extensions = ['jpg', 'jpeg', 'png', 'avif'];
             $imageName = null;
 
-            // Get all files in the directory once, safely
+            // Get all files in the database/data/swords directory once, safely
             static $allFiles = null;
             if ($allFiles === null) {
-                $path = storage_path("app/public/swords");
+                $path = base_path("database/data/swords");
                 $allFiles = is_dir($path) ? scandir($path) : [];
             }
 
@@ -108,19 +108,19 @@ class SwordSeeder extends Seeder
                 'collection_id' => $collection->id,
             ]);
 
-            /*
             // Physically copy the file to the structured folder: storage/app/public/{collection_id}/{sword_id}/{filename}
             if ($imageName) {
-                $sourcePath = storage_path("app/public/swords/{$imageName}");
+                $sourcePath = base_path("database/data/swords/{$imageName}");
                 $destDir = storage_path("app/public/{$collection->id}/{$sword->id}");
                 
                 if (!file_exists($destDir)) {
                     mkdir($destDir, 0755, true);
                 }
                 
-                copy($sourcePath, "{$destDir}/{$imageName}");
+                if (file_exists($sourcePath)) {
+                    copy($sourcePath, "{$destDir}/{$imageName}");
+                }
             }
-            */
 
             $swordCount++;
             // Increment collection index every 2-3 swords (simple cycling works too)

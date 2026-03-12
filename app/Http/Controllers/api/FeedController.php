@@ -23,7 +23,7 @@ class FeedController extends Controller
             return response()->json([], 200, ['Content-Type' => 'application/json; charset=UTF-8']);
         }
 
-        $swords = Sword::with(['type', 'origin', 'collection.user', 'media', 'criteria'])
+        $swords = Sword::with(['era', 'origin', 'collection.user', 'media', 'criteria'])
             ->whereHas('collection', function ($query) use ($followingIds) {
                 $query->whereIn('user_id', $followingIds);
             })

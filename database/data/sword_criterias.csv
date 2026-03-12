@@ -1,0 +1,186 @@
+sword_name,criteria_name,rating
+Katana,Longueur,86 cm
+Katana,Poids,2.0 kg
+Katana,Matériaux,Acier de Damas
+Katana,Rareté,Légendaire
+Katana,État,Collection privée
+Tachi,Longueur,101 cm
+Tachi,Poids,1.4 kg
+Tachi,Matériaux,Acier trempé
+Tachi,Rareté,Épique
+Tachi,État,Usé
+Chokuto,Longueur,80 cm
+Chokuto,Poids,1.9 kg
+Chokuto,Matériaux,Acier trempé
+Chokuto,Rareté,Épique
+Chokuto,État,Bon
+Tsurugi,Longueur,90 cm
+Tsurugi,Poids,1.4 kg
+Tsurugi,Matériaux,Acier au carbone
+Tsurugi,Rareté,Rare
+Tsurugi,État,Antique
+Wakizashi,Longueur,54 cm
+Wakizashi,Poids,1.8 kg
+Wakizashi,Matériaux,Acier de Damas
+Wakizashi,Rareté,Légendaire
+Wakizashi,État,Bon
+Tanto,Longueur,53 cm
+Tanto,Poids,0.4 kg
+Tanto,Matériaux,Fer forgé
+Tanto,Rareté,Épique
+Tanto,État,Excellent
+Odachi,Longueur,171 cm
+Odachi,Poids,3.4 kg
+Odachi,Matériaux,Acier au carbone
+Odachi,Rareté,Épique
+Odachi,État,Antique
+Gladius,Longueur,101 cm
+Gladius,Poids,1.5 kg
+Gladius,Matériaux,Acier trempé
+Gladius,Rareté,Commun
+Gladius,État,Antique
+Xiphos,Longueur,80 cm
+Xiphos,Poids,1.8 kg
+Xiphos,Matériaux,Acier de Damas
+Xiphos,Rareté,Commun
+Xiphos,État,Excellent
+Longsword,Longueur,115 cm
+Longsword,Poids,1.4 kg
+Longsword,Matériaux,Acier au carbone
+Longsword,Rareté,Légendaire
+Longsword,État,Bon
+Rapier,Longueur,98 cm
+Rapier,Poids,1.5 kg
+Rapier,Matériaux,Acier trempé
+Rapier,Rareté,Légendaire
+Rapier,État,Usé
+Claymore,Longueur,88 cm
+Claymore,Poids,1.0 kg
+Claymore,Matériaux,Acier au carbone
+Claymore,Rareté,Épique
+Claymore,État,Excellent
+Cutlass,Longueur,103 cm
+Cutlass,Poids,1.4 kg
+Cutlass,Matériaux,Acier trempé
+Cutlass,Rareté,Légendaire
+Cutlass,État,Collection privée
+Viking Sword,Longueur,100 cm
+Viking Sword,Poids,1.6 kg
+Viking Sword,Matériaux,Acier trempé
+Viking Sword,Rareté,Légendaire
+Viking Sword,État,Collection privée
+Falchion,Longueur,71 cm
+Falchion,Poids,1.1 kg
+Falchion,Matériaux,Acier au carbone
+Falchion,Rareté,Rare
+Falchion,État,Excellent
+Bastard Sword,Longueur,110 cm
+Bastard Sword,Poids,1.4 kg
+Bastard Sword,Matériaux,Fer forgé
+Bastard Sword,Rareté,Rare
+Bastard Sword,État,Excellent
+Zweihänder,Longueur,153 cm
+Zweihänder,Poids,4.4 kg
+Zweihänder,Matériaux,Acier au carbone
+Zweihänder,Rareté,Légendaire
+Zweihänder,État,Antique
+Smallsword,Longueur,97 cm
+Smallsword,Poids,1.8 kg
+Smallsword,Matériaux,Acier au carbone
+Smallsword,Rareté,Commun
+Smallsword,État,Collection privée
+Jian,Longueur,90 cm
+Jian,Poids,2.0 kg
+Jian,Matériaux,Acier de Damas
+Jian,Rareté,Commun
+Jian,État,Antique
+Dao,Longueur,117 cm
+Dao,Poids,1.4 kg
+Dao,Matériaux,Fer forgé
+Dao,Rareté,Épique
+Dao,État,Usé
+Liuyedao,Longueur,94 cm
+Liuyedao,Poids,1.3 kg
+Liuyedao,Matériaux,Acier trempé
+Liuyedao,Rareté,Rare
+Liuyedao,État,Collection privée
+Zhanmadao,Longueur,80 cm
+Zhanmadao,Poids,1.5 kg
+Zhanmadao,Matériaux,Acier trempé
+Zhanmadao,Rareté,Épique
+Zhanmadao,État,Antique
+Dadao,Longueur,117 cm
+Dadao,Poids,1.6 kg
+Dadao,Matériaux,Acier trempé
+Dadao,Rareté,Commun
+Dadao,État,Bon
+Shamshir,Longueur,85 cm
+Shamshir,Poids,1.3 kg
+Shamshir,Matériaux,Fer forgé
+Shamshir,Rareté,Légendaire
+Shamshir,État,Antique
+Kilij,Longueur,88 cm
+Kilij,Poids,1.5 kg
+Kilij,Matériaux,Acier au carbone
+Kilij,Rareté,Légendaire
+Kilij,État,Bon
+Scimitar,Longueur,117 cm
+Scimitar,Poids,1.7 kg
+Scimitar,Matériaux,Fer forgé
+Scimitar,Rareté,Épique
+Scimitar,État,Collection privée
+Yatagan,Longueur,108 cm
+Yatagan,Poids,1.2 kg
+Yatagan,Matériaux,Acier au carbone
+Yatagan,Rareté,Commun
+Yatagan,État,Usé
+Talwar,Longueur,116 cm
+Talwar,Poids,1.5 kg
+Talwar,Matériaux,Acier au carbone
+Talwar,Rareté,Rare
+Talwar,État,Antique
+Khanda,Longueur,78 cm
+Khanda,Poids,1.2 kg
+Khanda,Matériaux,Acier trempé
+Khanda,Rareté,Commun
+Khanda,État,Excellent
+Pata,Longueur,103 cm
+Pata,Poids,1.2 kg
+Pata,Matériaux,Acier trempé
+Pata,Rareté,Épique
+Pata,État,Bon
+Kris,Longueur,102 cm
+Kris,Poids,1.7 kg
+Kris,Matériaux,Acier trempé
+Kris,Rareté,Commun
+Kris,État,Usé
+Kampilan,Longueur,84 cm
+Kampilan,Poids,1.4 kg
+Kampilan,Matériaux,Acier au carbone
+Kampilan,Rareté,Rare
+Kampilan,État,Bon
+Dha,Longueur,97 cm
+Dha,Poids,1.1 kg
+Dha,Matériaux,Acier trempé
+Dha,Rareté,Épique
+Dha,État,Antique
+Khopesh,Longueur,117 cm
+Khopesh,Poids,2.0 kg
+Khopesh,Matériaux,Bronze
+Khopesh,Rareté,Rare
+Khopesh,État,Excellent
+Kaskara,Longueur,72 cm
+Kaskara,Poids,1.1 kg
+Kaskara,Matériaux,Acier trempé
+Kaskara,Rareté,Rare
+Kaskara,État,Antique
+Shotel,Longueur,73 cm
+Shotel,Poids,1.5 kg
+Shotel,Matériaux,Acier au carbone
+Shotel,Rareté,Commun
+Shotel,État,Collection privée
+Macuahuitl,Longueur,112 cm
+Macuahuitl,Poids,1.9 kg
+Macuahuitl,Matériaux,Bois et Obsidienne
+Macuahuitl,Rareté,Commun
+Macuahuitl,État,Collection privée

@@ -17,8 +17,8 @@ class UserSeeder extends Seeder
             'role' => 'admin',
         ]);
 
-        // 5 Regular users
-        User::factory(5)->create([
+        // 15 Regular users
+        User::factory(15)->create([
             'password' => bcrypt('password'),
             'role' => 'user',
         ]);

@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->text('description')->nullable();
             $table->string('short_description')->nullable();
             $table->string('image_cover')->nullable();
-            $table->foreignId('type_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('era_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('origin_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('collection_id')->nullable()->constrained()->nullOnDelete();
             $table->timestamps();

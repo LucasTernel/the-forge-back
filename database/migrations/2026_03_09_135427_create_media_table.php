@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('media', function (Blueprint $table) {
             $table->id();
             $table->string('url');
-            $table->string('type')->default('image');
+            $table->string('type')->nullable()->default('image');
             $table->foreignId('sword_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });

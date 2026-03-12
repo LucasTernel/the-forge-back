@@ -2,9 +2,13 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\User;
+use App\Models\Era;
+use App\Models\Origin;
+use App\Models\Collection;
+use App\Models\Sword;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,54 +27,41 @@ class DatabaseSeeder extends Seeder
             'role' => 'admin',
         ]);
 
-        // 2. Create Types
-        $katanaType = \App\Models\Type::create(['name' => 'Katana']);
-        $longswordType = \App\Models\Type::create(['name' => 'Épée longue']);
-        $daggerType = \App\Models\Type::create(['name' => 'Dagger']);
-        $rapierType = \App\Models\Type::create(['name' => 'Rapier']);
-        $halberdType = \App\Models\Type::create(['name' => 'Halberd']);
-        $naginataType = \App\Models\Type::create(['name' => 'Naginata']);
-        $spearType = \App\Models\Type::create(['name' => 'Spear']);
-        $maceType = \App\Models\Type::create(['name' => 'Mace']);
-        $warhammerType = \App\Models\Type::create(['name' => 'War Hammer']);
-        $flailType = \App\Models\Type::create(['name' => 'Flail']);
-        $longbowType = \App\Models\Type::create(['name' => 'Longbow']);
-        $crossbowType = \App\Models\Type::create(['name' => 'Crossbow']);
-        $claymoreType = \App\Models\Type::create(['name' => 'Claymore']);
-        $scimitarType = \App\Models\Type::create(['name' => 'Scimitar']);
-        $battleaxeType = \App\Models\Type::create(['name' => 'Battle Axe']);
-        $shortswordType = \App\Models\Type::create(['name' => 'Shortsword']);
-        $gladiusType = \App\Models\Type::create(['name' => 'Gladius']);
-        $morningstarType = \App\Models\Type::create(['name' => 'Morning Star']);
+        // 2. Create Historical Eras
+        $antiquiteEra = Era::create(['name' => 'Antiquité', 'color' => '#d4af37', 'overlay' => 'light', 'image_cover' => 'https://example.com/antiquite-era.jpg']);
+        $moyenAgeEra = Era::create(['name' => 'Moyen Âge', 'color' => '#4a4a4a', 'overlay' => 'dark', 'image_cover' => 'https://example.com/moyen-age-era.jpg']);
+        $renaissanceEra = Era::create(['name' => 'Renaissance', 'color' => '#8b4513', 'overlay' => 'light', 'image_cover' => 'https://example.com/renaissance-era.jpg']);
+        $epoqueModerneEra = Era::create(['name' => 'Époque Moderne', 'color' => '#c0c0c0', 'overlay' => 'light', 'image_cover' => 'https://example.com/epoque-moderne-era.jpg']);
+        $epoqueContemporaineEra = Era::create(['name' => 'Époque Contemporaine', 'color' => '#2f4f4f', 'overlay' => 'dark', 'image_cover' => 'https://example.com/epoque-contemporaine-era.jpg']);
 
         // 3. Create Origins
-        $japan = \App\Models\Origin::create(['name' => 'Japon']);
-        $europe = \App\Models\Origin::create(['name' => 'Europe']);
+        $japan = Origin::create(['name' => 'Japon', 'color' => '#fff', 'overlay' => 'red', 'image_cover' => 'https://example.com/japan-origin.jpg']);
+        $europe = Origin::create(['name' => 'Europe', 'color' => '#aaa', 'overlay' => 'blue', 'image_cover' => 'https://example.com/europe-origin.jpg']);
 
         // 4. Create a Collection for the user
-        $collection = \App\Models\Collection::create([
+        $collection = Collection::create([
             'name' => 'Ma Collection Légendaire',
             'user_id' => $user->id,
             'image_cover' => 'https://example.com/collection-cover.jpg',
         ]);
 
         // 5. Create Sword Examples
-        \App\Models\Sword::create([
+        Sword::create([
             'name' => 'Masamune',
             'description' => 'Une lame légendaire forgée par le plus grand forgeron du Japon.',
             'short_description' => 'Lame légendaire japonaise.',
             'image_cover' => 'https://example.com/masamune.jpg',
-            'type_id' => $katanaType->id,
+            'era_id' => $moyenAgeEra->id,
             'origin_id' => $japan->id,
             'collection_id' => $collection->id,
         ]);
 
-        \App\Models\Sword::create([
+        Sword::create([
             'name' => 'Excalibur',
             'description' => 'L\'épée mythique du Roi Arthur, censée avoir des pouvoirs magiques.',
             'short_description' => 'Épée mythique européenne.',
             'image_cover' => 'https://example.com/excalibur.jpg',
-            'type_id' => $longswordType->id,
+            'era_id' => $moyenAgeEra->id,
             'origin_id' => $europe->id,
             'collection_id' => $collection->id,
         ]);

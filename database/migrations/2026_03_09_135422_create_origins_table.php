@@ -14,8 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->string('name');
             $table->string('image_cover')->nullable();
-            $table->string('overlay')->nullable();
-            $table->string('color')->nullable();
+            $table->string('overlay_color')->nullable();
             $table->timestamps();
         });
     }

@@ -9,19 +9,19 @@ class OriginSeeder extends Seeder
 {
     public function run(): void
     {
-        $continents = [
-            ['name' => 'Afrique', 'color' => '#FF4500', 'overlay' => 'dark'],
-            ['name' => 'Amérique du Nord', 'color' => '#1E90FF', 'overlay' => 'dark'],
-            ['name' => 'Amérique du Sud', 'color' => '#32CD32', 'overlay' => 'light'],
-            ['name' => 'Antarctique', 'color' => '#00FFFF', 'overlay' => 'light'],
-            ['name' => 'Asie', 'color' => '#FFD700', 'overlay' => 'light'],
-            ['name' => 'Europe', 'color' => '#8A2BE2', 'overlay' => 'dark'],
-            ['name' => 'Océanie', 'color' => '#FF1493', 'overlay' => 'light'],
-        ];
+        $csvFile = fopen(base_path("database/data/origins.csv"), "r");
+        $firstline = true;
 
-        foreach ($continents as $index => $continent) {
-            $continent['image_cover'] = 'https://picsum.photos/800/600?random=' . (200 + $index);
-            Origin::create($continent);
+        while (($data = fgetcsv($csvFile, 2000, ",")) !== FALSE) {
+            if (!$firstline) {
+                Origin::create([
+                    "name" => $data['0'],
+                    "image_cover" => $data['1'],
+                    "overlay_color" => $data['2']
+                ]);
+            }
+            $firstline = false;
         }
+        fclose($csvFile);
     }
 }

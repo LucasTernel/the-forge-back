@@ -27,4 +27,4 @@ Homestead.json
 /.vagrant
 .phpunit.result.cache
 composer.lock
-
+database/database.sqlite

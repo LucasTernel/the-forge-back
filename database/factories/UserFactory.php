@@ -28,6 +28,8 @@ class UserFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
+            'role' => 'user',
+            'avatar_url' => 'https://api.dicebear.com/7.x/avataaars/svg?seed=' . urlencode(fake()->name()),
             'remember_token' => Str::random(10),
         ];
     }

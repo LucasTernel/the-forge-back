@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Origin extends Model
 {
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'image_cover', 'overlay', 'color'];
 
     public function swords()
     {

@@ -13,6 +13,8 @@ return new class extends Migration {
         Schema::create('origins', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('image_cover')->nullable();
+            $table->string('overlay_color')->nullable();
             $table->timestamps();
         });
     }
